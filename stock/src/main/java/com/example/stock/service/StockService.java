@@ -1,17 +1,31 @@
 package com.example.stock.service;
 
 import com.example.stock.domain.Stock;
+import com.example.stock.dto.StockDto;
 import com.example.stock.repository.StockRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class StockService {
     private final StockRepository stockRepository;
 
-    public Stock findStockById(Long stockId){
-        return stockRepository.findById(stockId).orElseThrow(() -> new NOT_EXIST_EXCEPTION("요청한 상품이 존재하지 않습니다."));
+    // 존재하지 않는 상품을 요청했을 때 예외 발생
+    public StockDto getStock(Long stockId) {
+
+        Optional<Stock> stock = stockRepository.findById(stockId);
+
+        if(stock.isEmpty()) {
+            throw new RuntimeException(); // Temporary Code. 커스텀 예외 만들 것
+        }
+        return StockDto.entityToDto(stock.get());
     }
 
+//     stockDto에서 갯수 꺼내서 requireAmount 이상인지 확인
+    public boolean isSatisfyRequire(StockDto stockDto, int requireAmount) {
+        return stockDto.getAmount() >= requireAmount;
+    }
 }

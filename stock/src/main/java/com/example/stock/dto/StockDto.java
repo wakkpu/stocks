@@ -3,7 +3,9 @@ package com.example.stock.dto;
 import com.example.stock.domain.Stock;
 import com.example.stock.domain.StockStatus;
 import lombok.Builder;
+import lombok.Getter;
 
+@Getter
 public class StockDto {
     Long id;
     private String name;
@@ -20,7 +22,7 @@ public class StockDto {
         this.stockStatus = stockStatus;
     }
 
-    public StockDto entityToDto(Stock stock){
+    public static StockDto entityToDto(Stock stock){
         return StockDto.builder()
                 .id(stock.getId())
                 .amount(stock.getAmount())
