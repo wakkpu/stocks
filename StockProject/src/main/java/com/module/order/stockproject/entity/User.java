@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table
+@Table(name = "Member") //User도 예약어에요
 @Entity
 public class User {
 
@@ -29,4 +29,8 @@ public class User {
 //    private Long balance;
     @ColumnDefault("0")
     private long balance;
+
+    public boolean canBuy(long price){
+        return balance >= price;
+    }
 }
