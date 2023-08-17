@@ -2,14 +2,16 @@ package com.example.stock.controller;
 
 import com.example.stock.dto.StockDto;
 import com.example.stock.dto.ValidateDto;
+import com.example.stock.exception.NotExistException;
+import com.example.stock.exception.UnsatisfyingException;
 import com.example.stock.service.StockService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
+@RequestMapping("/")
 @RequiredArgsConstructor
 public class StockController {
     private final StockService stockService;
@@ -23,7 +25,7 @@ public class StockController {
      * 구글링을 해보니, 보안상의 이유로(사실 따지고보면 POST도 보안상으로 완벽한 건 아니다)
      * Read를 할때 POST를 쓰는 경우도 있다고 한다.
      */
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<?> validateStock(@RequestBody ValidateDto validateDto) {
         /**
          * Controller의 코드 부분을 비즈니스 로직으로 봐서 Service단으로 내려야 할까?
@@ -37,19 +39,28 @@ public class StockController {
          * 나름의 해결) @ControlerAdvice의 Global Exception Handler 통해서 Exception 처리하면 된다.
          * Controller단에서 try-catch할 필요 없음.
          */
-        StockDto stock = null;
-        try {
-            stock = stockService.getStock(validateDto.getStockId());
-        } catch (RuntimeException e) {
-            // return 400
-        }
+        StockDto stock = stockService.getStock(validateDto.getStockId());
 
-        boolean flag = stockService.isSatisfyRequire(stock, validateDto.getRequireAmount());
+        stockService.isSatisfyRequire(stock, validateDto.getRequireAmount());
 
-        if(flag) {
-            // return 200
-        }  else {
-            // return 400
-        }
+        return ResponseEntity.ok().build();
     }
+
+    @GetMapping("{stockId}")
+    public ResponseEntity<?> getStockPrice(@PathVariable("stockId") long stockId) {
+        StockDto stock = stockService.getStock(stockId);
+
+        return new ResponseEntity<>(stock.getPrice(), HttpStatus.OK);
+    }
+
+    @ExceptionHandler(UnsatisfyingException.class)
+    public ResponseEntity<?> UnsatisfyingExceptionHandler() {
+        return ResponseEntity.badRequest().build();
+    }
+
+    @ExceptionHandler(NotExistException.class)
+    public ResponseEntity<?> NotExistExceptionHandler() {
+        return ResponseEntity.notFound().build();
+    }
+
 }

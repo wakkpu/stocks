@@ -19,13 +19,14 @@ public class StockService {
         Optional<Stock> stock = stockRepository.findById(stockId);
 
         if(stock.isEmpty()) {
-            throw new RuntimeException(); // Temporary Code. 커스텀 예외 만들 것
+            throw new RuntimeException("NotExistException"); // Temporary Code. 커스텀 예외 만들 것
         }
         return StockDto.entityToDto(stock.get());
     }
 
-//     stockDto에서 갯수 꺼내서 requireAmount 이상인지 확인
-    public boolean isSatisfyRequire(StockDto stockDto, int requireAmount) {
-        return stockDto.getAmount() >= requireAmount;
+    public void isSatisfyRequire(StockDto stockDto, int requireAmount) {
+        if(stockDto.getAmount() < requireAmount) {
+            throw new RuntimeException("UnsatisfyingException");
+        }
     }
 }
