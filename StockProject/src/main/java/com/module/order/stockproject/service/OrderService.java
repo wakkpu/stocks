@@ -1,5 +1,7 @@
 package com.module.order.stockproject.service;
 
+import com.module.order.stockproject.api.StockClient;
+import com.module.order.stockproject.dto.OrderResponse;
 import com.module.order.stockproject.entity.Order;
 import com.module.order.stockproject.entity.User;
 import com.module.order.stockproject.exception.ErrorMessage;
@@ -18,31 +20,42 @@ import java.util.Optional;
 public class OrderService {
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
+    private final StockClient stockClient;
 
     @Transactional
-    public void buy(long userId, long stockId) {
-        /*
-        checkStock(stockId)
-        사용자로부터 입력받은 stockId를 넘겨, checkStock(stockId) 메서드 안에서 재고시스템으로 통신을 보냈다 가정
-        재고가 있다는 200 상태코드를 받았다고 가정
-         */
-//        checkStock();
-        User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(ErrorMessage.USER_NOT_FOUND));//
+    public OrderResponse buyProduct(long userId, long stockId, long quantity, LocalDateTime now){
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException(ErrorMessage.USER_NOT_FOUND));
+
+        stockValidation(stockId, quantity);
+        buyValidation(user, stockId, quantity);
+        return makeOrder(user, stockId, now);
+    }
+
+    @Transactional
+    public OrderResponse makeOrder(User user, long stockId, LocalDateTime now) {
         Order order = Order.builder()
                 .user(user)
                 .stockId(stockId)
-                .orderTime(LocalDateTime.now())
+                .orderTime(now)
                 .build();
-        orderRepository.save(order);
+
+        Order savedOrder = orderRepository.save(order);
+        return OrderResponse.fromEntity(savedOrder);
     }
 
-    public void buy2(long userId, long stockId){
-        checkStock();
-        buy(userId,stockId);
+    private void stockValidation(long stockId, long quantity){
+        stockClient.validateStockQuantity(stockId,quantity);
+//        // 통신 요청
+//        if(통신이 실패하면) throw new 통신실패Exception();
+//
+//        // 200 400
+//        if(재고가 부족하면) throw new 재고부족Exception();
     }
 
-    public boolean checkStock(){
-        return true;
+    private void buyValidation(User user, long stockId, long quantity){
+        long stockPrice = stockClient.getStockPrice(stockId);
+        user.canBuy(stockPrice * quantity);
     }
 
 }
