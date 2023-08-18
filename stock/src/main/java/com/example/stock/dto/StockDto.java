@@ -26,6 +26,7 @@ public class StockDto {
         return StockDto.builder()
                 .id(stock.getId())
                 .amount(stock.getAmount())
+                .price(stock.getPrice())
                 .build();
     }
 }

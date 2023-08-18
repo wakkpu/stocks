@@ -17,7 +17,6 @@ public class StockService {
     public StockDto getStock(Long stockId) {
 
         Optional<Stock> stock = stockRepository.findById(stockId);
-
         if(stock.isEmpty()) {
             throw new RuntimeException("NotExistException"); // Temporary Code. 커스텀 예외 만들 것
         }
