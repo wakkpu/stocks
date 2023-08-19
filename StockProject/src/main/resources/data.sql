@@ -1,0 +1,1 @@
+INSERT INTO member(id,balance,user_name) VALUES(1,0,"user1")

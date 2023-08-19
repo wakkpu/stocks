@@ -1,6 +1,7 @@
 package com.module.order.stockproject.service;
 
 import com.module.order.stockproject.api.StockClient;
+import com.module.order.stockproject.dto.BuyRequest;
 import com.module.order.stockproject.dto.OrderResponse;
 import com.module.order.stockproject.entity.Order;
 import com.module.order.stockproject.entity.User;
@@ -17,6 +18,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDateTime;
 
@@ -47,22 +50,26 @@ class OrderServiceTest {
     @DisplayName("")
     @Test
     public void buyProduct(){
+        int stockPrice = 100_000;
         BDDMockito.given(stockClient.getStockPrice(anyLong()))
-                .willReturn(1L);
-        long userId = 1L;
-        long stockId = 1L;
-        long quantity = 1L;
+                .willReturn(stockPrice);
+
         LocalDateTime now = LocalDateTime.now();
         User user = User.builder()
                 .userName("test1")
                 .build();
         userRepository.save(user);
-        OrderResponse orderResponse = orderService.buyProduct(userId, stockId, quantity,now);
+        BuyRequest buyRequest = BuyRequest.builder()
+                .userId(1L)
+                .stockId(1L)
+                .quantity(1L)
+                .build();
+        OrderResponse orderResponse = orderService.buyProduct(buyRequest,now);
         assertThat(orderResponse.getId()).isNotNull();
         assertThat(orderResponse).extracting(
             "stockId","orderTime"
         )
-        .containsExactlyInAnyOrder(1L,now);
+        .containsExactlyInAnyOrder(buyRequest.getUserId(),now);
     }
 
 }

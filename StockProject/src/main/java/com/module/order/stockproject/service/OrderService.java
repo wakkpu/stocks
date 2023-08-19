@@ -1,6 +1,7 @@
 package com.module.order.stockproject.service;
 
 import com.module.order.stockproject.api.StockClient;
+import com.module.order.stockproject.dto.BuyRequest;
 import com.module.order.stockproject.dto.OrderResponse;
 import com.module.order.stockproject.entity.Order;
 import com.module.order.stockproject.entity.User;
@@ -9,6 +10,7 @@ import com.module.order.stockproject.exception.UserNotFoundException;
 import com.module.order.stockproject.repository.OrderRepository;
 import com.module.order.stockproject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,17 +25,17 @@ public class OrderService {
     private final StockClient stockClient;
 
     @Transactional
-    public OrderResponse buyProduct(long userId, long stockId, long quantity, LocalDateTime now){
-        User user = userRepository.findById(userId)
+    public OrderResponse buyProduct(BuyRequest buyRequest, LocalDateTime now){
+        User user = userRepository.findById(buyRequest.getUserId())
                 .orElseThrow(() -> new UserNotFoundException(ErrorMessage.USER_NOT_FOUND));
 
-        stockValidation(stockId, quantity);
-        buyValidation(user, stockId, quantity);
-        return makeOrder(user, stockId, now);
+        stockValidation(buyRequest.getStockId(), buyRequest.getQuantity());
+//        buyValidation(user, buyRequest.getStockId(), buyRequest.getQuantity());
+        return makeOrder(user, buyRequest.getStockId(), now);
     }
 
     @Transactional
-    public OrderResponse makeOrder(User user, long stockId, LocalDateTime now) {
+    protected OrderResponse makeOrder(User user, long stockId, LocalDateTime now) {
         Order order = Order.builder()
                 .user(user)
                 .stockId(stockId)
@@ -45,7 +47,8 @@ public class OrderService {
     }
 
     private void stockValidation(long stockId, long quantity){
-        stockClient.validateStockQuantity(stockId,quantity);
+        stockClient.validateStockQuantity(stockId, quantity);
+
 //        // 통신 요청
 //        if(통신이 실패하면) throw new 통신실패Exception();
 //
@@ -54,6 +57,7 @@ public class OrderService {
     }
 
     private void buyValidation(User user, long stockId, long quantity){
+
         long stockPrice = stockClient.getStockPrice(stockId);
         user.canBuy(stockPrice * quantity);
     }
