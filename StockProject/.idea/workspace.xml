@@ -5,21 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62bd0545-8af1-4965-9356-1253a3bd40d3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/controller/OrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/dto/BuyRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/dto/StockRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/exception/InsufficientBalanceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/service/OrderRepoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/module/order/stockproject/service/OrderRepoServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/api/StockClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/api/StockClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/dto/OrderResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/dto/OrderResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/exception/ApiConnectionFailException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/exception/ApiConnectionFailException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/exception/ErrorMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/exception/ErrorCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/exception/UserNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/exception/UserNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/module/order/stockproject/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/module/order/stockproject/entity/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/module/order/stockproject/entity/UserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/module/order/stockproject/service/OrderServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/module/order/stockproject/service/OrderServiceTest.java" afterDir="false" />
     </list>
@@ -53,8 +49,8 @@
       <list>
         <option value="module-info" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -72,29 +68,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "order",
-    "last_opened_file_path": "C:/Users/qwert/OneDrive/바탕 화면/order/stocks/StockProject/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "spring.configuration.checksum": "caa8fc6a219e6cbaf02a44acb1d634e9",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;order&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/qwert/OneDrive/바탕 화면/order/stocks/StockProject/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;caa8fc6a219e6cbaf02a44acb1d634e9&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -111,54 +107,16 @@
       <recent name="com.module.order.stockproject.entity" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OrderServiceTest.buyProduct">
-    <configuration name="OrderServiceTest.buyProduct" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.module.order.stockproject.service.OrderServiceTest.buyProduct&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+  <component name="RunManager" selected="JUnit.All in StockProject.test">
+    <configuration name="All in StockProject.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="StockProject.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="UserTest.basicBalance" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.module.order.stockproject.entity.UserTest.basicBalance&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="OrderServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrderRepoServiceTest.makeOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="StockProject.test" />
       <extension name="coverage">
         <pattern>
@@ -167,8 +125,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.module.order.stockproject.service" />
-      <option name="MAIN_CLASS_NAME" value="com.module.order.stockproject.service.OrderServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="com.module.order.stockproject.service.OrderRepoServiceTest" />
+      <option name="METHOD_NAME" value="makeOrder" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -189,17 +148,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrderServiceTest.buyProduct2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="StockProject.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.module.order.stockproject.entity.*" />
+          <option name="PATTERN" value="com.module.order.stockproject.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.module.order.stockproject.entity" />
-      <option name="MAIN_CLASS_NAME" value="com.module.order.stockproject.entity.UserTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.module.order.stockproject.service" />
+      <option name="MAIN_CLASS_NAME" value="com.module.order.stockproject.service.OrderServiceTest" />
+      <option name="METHOD_NAME" value="buyProduct2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderServiceTest.buyProduct3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="StockProject.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.module.order.stockproject.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.module.order.stockproject.service" />
+      <option name="MAIN_CLASS_NAME" value="com.module.order.stockproject.service.OrderServiceTest" />
+      <option name="METHOD_NAME" value="buyProduct3" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -214,11 +190,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in StockProject.test" />
+        <item itemvalue="JUnit.OrderRepoServiceTest.makeOrder" />
+        <item itemvalue="JUnit.OrderServiceTest.buyProduct3" />
+        <item itemvalue="JUnit.OrderServiceTest.buyProduct2" />
         <item itemvalue="JUnit.OrderServiceTest.buyProduct" />
-        <item itemvalue="JUnit.UserTest" />
-        <item itemvalue="JUnit.OrderServiceTest" />
-        <item itemvalue="Gradle.OrderServiceTest.buyProduct" />
-        <item itemvalue="Gradle.UserTest.basicBalance" />
       </list>
     </recent_temporary>
   </component>
@@ -236,7 +212,8 @@
       <workItem from="1691146871627" duration="19000" />
       <workItem from="1692267049041" duration="5683000" />
       <workItem from="1692272819811" duration="2662000" />
-      <workItem from="1692431688882" duration="6687000" />
+      <workItem from="1692431688882" duration="7040000" />
+      <workItem from="1692505287985" duration="3822000" />
     </task>
     <servers />
   </component>

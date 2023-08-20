@@ -1,9 +1,10 @@
 package com.module.order.stockproject.exception;
 
 public class UserNotFoundException extends RuntimeException {
-    ErrorMessage errorMessage;
+    ErrorCode errorCode;
 
-    public UserNotFoundException(ErrorMessage errorMessage) {
-        this.errorMessage = errorMessage;
+    public UserNotFoundException(ErrorCode errorCode) {
+        super(errorCode.getErrorMessage());
+        this.errorCode = errorCode;
     }
 }

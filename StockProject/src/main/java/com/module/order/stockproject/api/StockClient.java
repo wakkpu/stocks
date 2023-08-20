@@ -16,6 +16,7 @@ public class StockClient {
                 .stockId(stockId)
                 .requireAmount(quantity)
                 .build();
+        // TODO: 예외 처리하기
         WebClient.create()
                 .post()
                 .uri(URL)
@@ -34,7 +35,4 @@ public class StockClient {
                 .block();
     }
 
-    private String makeUrl(long stockId, long quantity){
-        return URL + "asdasd";
-    }
 }

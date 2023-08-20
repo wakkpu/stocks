@@ -1,5 +1,6 @@
 package com.module.order.stockproject.entity;
 
+import com.module.order.stockproject.exception.InsufficientBalanceException;
 import com.module.order.stockproject.repository.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -9,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @SpringBootTest
 class UserTest {
@@ -32,7 +34,7 @@ class UserTest {
                 .balance(userBalance)
                 .build();
 
-        assertThat(user.canBuy(buyPrice)).isTrue();
+        user.canBuy(buyPrice);
     }
 
     @DisplayName("유저는 자신의 잔액을 초과하는 물건을 구매할 수 없습니다.")
@@ -45,7 +47,9 @@ class UserTest {
                 .balance(userBalance)
                 .build();
 
-        assertThat(user.canBuy(buyPrice)).isFalse();
+        assertThatThrownBy(() -> user.canBuy(buyPrice))
+                        .isInstanceOf(InsufficientBalanceException.class)
+                        .hasMessage("잔액이 부족합니다.");
     }
 
 

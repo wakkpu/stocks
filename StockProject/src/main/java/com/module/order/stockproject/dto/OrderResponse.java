@@ -32,8 +32,5 @@ public class OrderResponse {
                 .userResponse(UserResponse.fromEntity(order.getUser()))
                 .orderTime(order.getOrderTime())
                 .build();
-
-
-
     }
 }

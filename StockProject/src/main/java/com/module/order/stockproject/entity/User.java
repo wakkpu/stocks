@@ -1,5 +1,6 @@
 package com.module.order.stockproject.entity;
 
+import com.module.order.stockproject.exception.InsufficientBalanceException;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+
+import static com.module.order.stockproject.exception.ErrorCode.INSUFFICIENT_BALANCE;
 
 @Data
 @NoArgsConstructor
@@ -30,7 +33,7 @@ public class User {
     @ColumnDefault("0")
     private long balance;
 
-    public boolean canBuy(long price){
-        return balance >= price;
+    public void canBuy(long price){
+        if(balance < price) throw new InsufficientBalanceException(INSUFFICIENT_BALANCE);
     }
 }
