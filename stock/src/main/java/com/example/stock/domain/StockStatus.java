@@ -10,4 +10,8 @@ public enum StockStatus {
     StockStatus(String name) {
         this.name = name;
     }
+    public boolean canSell(StockStatus status){
+        if(status == SELLING) return true;
+        return false;
+    }
 }

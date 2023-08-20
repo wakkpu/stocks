@@ -22,7 +22,7 @@ public class StockDto {
         this.stockStatus = stockStatus;
     }
 
-    public static StockDto entityToDto(Stock stock){
+    public static StockDto fromEntity(Stock stock){
         return StockDto.builder()
                 .id(stock.getId())
                 .amount(stock.getAmount())

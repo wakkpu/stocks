@@ -20,7 +20,7 @@ public class StockService {
         if(stock.isEmpty()) {
             throw new RuntimeException("NotExistException"); // Temporary Code. 커스텀 예외 만들 것
         }
-        return StockDto.entityToDto(stock.get());
+        return StockDto.fromEntity(stock.get());
     }
 
     public void isSatisfyRequire(StockDto stockDto, int requireAmount) {

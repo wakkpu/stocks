@@ -1,5 +1,6 @@
 package com.example.stock.domain;
 
+import com.example.stock.exception.OutOfStockException;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public class Stock {
     StockStatus stockStatus;
 
     public void decreaseAmount(int requestAmount){
+        if(requestAmount > this.amount) throw new OutOfStockException();
         this.amount = this.amount - requestAmount;
     }
 
